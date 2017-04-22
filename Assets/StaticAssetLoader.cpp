@@ -10,6 +10,7 @@ void StaticAssetLoader::loadAssets() {
     m_bus->fire(new Ember::LoadTextureEvent("Logo", "assets/logo.png"));
     m_bus->fire(new Ember::LoadTextureEvent("LogoSmall", "assets/logo-small.png"));
     m_bus->fire(new Ember::LoadTextureEvent("LogoGray", "assets/logo-gray.png"));
+    m_bus->fire(new Ember::LoadTextureEvent("Tile", "assets/groundtile.png"));
 }
 
 StaticAssetLoader::StaticAssetLoader(Ember::EventBus *bus)

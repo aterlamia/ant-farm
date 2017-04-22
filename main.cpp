@@ -2,7 +2,7 @@
 #include "Game.h"
 
 int main() {
-    Game *game = new Game("TEST", 1000, 1000, (Uint32) 0);
+    Game *game = new Game("ANTFARM", 1024, 1024, (Uint32) 0);
 
     game->init();
     game->run();

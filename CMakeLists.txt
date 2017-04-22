@@ -11,7 +11,7 @@ set(SOURCE_FILES
         Game.h
         Assets/StaticAssetLoader.cpp
         Assets/StaticAssetLoader.h
-        )
+        GameObject/Map.cpp GameObject/Map.h Components/Tile.cpp Components/Tile.h)
 
 add_executable(AntFarm ${SOURCE_FILES})
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} /home/melvin/CLionProjects/EmberEngine/release/lib/libEmberEngine.so)

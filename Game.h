@@ -8,6 +8,7 @@
 
 
 #include <Game.h>
+#include "GameObject/Map.h"
 
 class Game : public Ember::Game {
 public:
@@ -17,6 +18,11 @@ protected:
     void registerAssetLoaders(Ember::EventBus *pBus) override;
 
     void loadScene();
+
+    void render() override;
+
+
+    Map *m_map;
 };
 
 
