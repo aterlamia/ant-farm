@@ -9,20 +9,25 @@
 
 #include <Game.h>
 #include "GameObject/Map.h"
+#include "Layer/LayerInterface.h"
+#include "Jobs/JobManager.h"
 
 class Game : public Ember::Game {
 public:
-    Game(const char *m_title, int m_windowHeight, int m_windowWidth, Uint32 flags);
+  Game(const char *m_title, int m_windowHeight, int m_windowWidth, Uint32 flags);
+
+  bool init();
 
 protected:
-    void registerAssetLoaders(Ember::EventBus *pBus) override;
+  void registerAssetLoaders(Ember::EventBus *pBus) override;
 
-    void loadScene();
+  void loadScene();
 
-    void render() override;
+  void render() override;
 
+  std::vector<LayerInterface *> m_layers;
 
-    Map *m_map;
+  JobManager *m_jobManager;
 };
 
 

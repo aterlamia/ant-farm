@@ -6,12 +6,12 @@
 
 class StaticAssetLoader : public Ember::AssetLoaderInterface {
 protected:
-    Ember::EventBus *m_bus;
+  Ember::EventBus *m_bus;
 
 public:
-    StaticAssetLoader(Ember::EventBus *bus);
+  StaticAssetLoader(Ember::EventBus *bus);
 
-    void loadAssets();
+  void loadAssets();
 };
 
 #endif //EMBERENGINE_STATICASSETLOADER_H

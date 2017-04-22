@@ -13,20 +13,20 @@
 
 class Map {
 public:
-    void init();
+  void init();
 
 
-    void render();
+  void render();
 
 private:
 public:
-    Map(Ember::EventBus *m_bus, int m_tilesRow, int m_tilesColumn);
+  Map(Ember::EventBus *m_bus, int m_tilesRow, int m_tilesColumn);
 
 private:
-    std::vector<std::vector<Ember::GameObject *>> m_map;
-    Ember::EventBus *m_bus;
-    int m_tilesRow;
-    int m_tilesColumn;
+  std::vector<std::vector<Ember::GameObject *>> m_map;
+  Ember::EventBus *m_bus;
+  int m_tilesRow;
+  int m_tilesColumn;
 };
 
 

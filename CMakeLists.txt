@@ -11,7 +11,7 @@ set(SOURCE_FILES
         Game.h
         Assets/StaticAssetLoader.cpp
         Assets/StaticAssetLoader.h
-        GameObject/Map.cpp GameObject/Map.h Components/Tile.cpp Components/Tile.h)
+        GameObject/Map.cpp GameObject/Map.h Components/Tile.cpp Components/Tile.h Layer/LayerInterface.h Layer/MapLayer.cpp Layer/MapLayer.h Layer/CharacterLayer.cpp Layer/CharacterLayer.h Components/Ant.cpp Components/Ant.h Jobs/JobManager.cpp Jobs/JobManager.h Jobs/JobInterface.cpp Jobs/JobInterface.h Events/BuildEvent.cpp Events/BuildEvent.h Events/MineEvent.cpp Events/MineEvent.h Events/EventMessage.h)
 
 add_executable(AntFarm ${SOURCE_FILES})
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} /home/melvin/CLionProjects/EmberEngine/release/lib/libEmberEngine.so)

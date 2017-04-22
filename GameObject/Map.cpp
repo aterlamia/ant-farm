@@ -16,11 +16,11 @@
  * @param m_tilesColumn
  */
 Map::Map(
-        Ember::EventBus *m_bus,
-        int m_tilesRow,
-        int m_tilesColumn
+    Ember::EventBus *m_bus,
+    int m_tilesRow,
+    int m_tilesColumn
 )
-        : m_bus(m_bus), m_tilesRow(m_tilesRow), m_tilesColumn(m_tilesColumn) {}
+    : m_bus(m_bus), m_tilesRow(m_tilesRow), m_tilesColumn(m_tilesColumn) {}
 
 
 /**
@@ -28,41 +28,41 @@ Map::Map(
  * @return
  */
 void Map::init() {
-    for (int i = 0; i < m_tilesRow; i++) {
-        std::vector<Ember::GameObject *> row;
-        for (int j = 0; j < m_tilesColumn; j++) {
+  for (int i = 0; i < m_tilesRow; i++) {
+    std::vector<Ember::GameObject *> row;
+    for (int j = 0; j < m_tilesColumn; j++) {
 
-            int randColumn = rand() % 8 + 1;
-            int randRow = rand() % 7 + 1;
-            Ember::GameObject *tile = new Ember::GameObject("Tile");
-            Tile *tileComponent = new Tile(Ember::COMPONENT_VISUAL, "Tile",
-                                           Ember::Position2d(0 + i * 64, 0 + j * 64),
-                                           Ember::Dimension2d(64, 64),
-                                           Ember::Frame(randRow, randColumn),
-                                           m_bus);
+      int randColumn = rand() % 8 + 1;
+      int randRow = rand() % 7 + 1;
+      Ember::GameObject *tile = new Ember::GameObject("Tile");
+      Tile *tileComponent = new Tile(Ember::COMPONENT_VISUAL, "Tile",
+                                     Ember::Position2d(0 + i * 64, 0 + j * 64),
+                                     Ember::Dimension2d(64, 64),
+                                     Ember::Frame(randRow, randColumn),
+                                     m_bus);
 
-            tileComponent->setTileType(Tile::TILE_SOIL);
+      tileComponent->setTileType(Tile::TILE_SOIL);
 
 
-            if (i == 8 && j == 8) {
-                tileComponent->setFrame(Ember::Frame(8, 8));
-                tileComponent->setTileType(Tile::TILE_NONE);
-            }
-            tile->addComponent(
-                    tileComponent
-            );
-            row.push_back(tile);
-        }
-        m_map.push_back(row);
+      if (i == 8 && j == 8) {
+        tileComponent->setFrame(Ember::Frame(8, 8));
+        tileComponent->setTileType(Tile::TILE_NONE);
+      }
+      tile->addComponent(
+          tileComponent
+      );
+      row.push_back(tile);
     }
+    m_map.push_back(row);
+  }
 }
 
 void Map::render() {
 
-    for (int i = 0; i < m_tilesRow; i++) {
-        for (int j = 0; j < m_tilesColumn; j++) {
-            m_map[i][j]->render();
-        }
-
+  for (int i = 0; i < m_tilesRow; i++) {
+    for (int j = 0; j < m_tilesColumn; j++) {
+      m_map[i][j]->render();
     }
+
+  }
 }
