@@ -8,6 +8,7 @@
 
 
 #include <Components/TiledTextureComponent.h>
+#include "../Jobs/JobInterface.h"
 
 class Ant : public Ember::TiledTextureComponent, public Ember::EventListenerInterface {
 public:
@@ -36,11 +37,15 @@ public:
   void setMineable(bool m_mineable);
 
   void handleGraphical() override;
+  void handleUpdates() override;
 
 protected:
   CHARACTER_TYPE m_characterType = CHARACTER_NONE;
   int m_health = 100;
   bool m_mineable = true;
+  int m_hunger = 100;
+  int m_energy = 100;
+//  JobInterface *m_job = nullptr;
 };
 
 

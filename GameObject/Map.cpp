@@ -20,7 +20,9 @@ Map::Map(
     int m_tilesRow,
     int m_tilesColumn
 )
-    : m_bus(m_bus), m_tilesRow(m_tilesRow), m_tilesColumn(m_tilesColumn) {}
+    : m_bus(m_bus)
+      , m_tilesRow(m_tilesRow)
+      , m_tilesColumn(m_tilesColumn) {}
 
 
 /**

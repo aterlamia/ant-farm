@@ -12,9 +12,14 @@
 #include "Layer/LayerInterface.h"
 #include "Jobs/JobManager.h"
 
-class Game : public Ember::Game {
+class MyGame : public Ember::Game {
 public:
-  Game(const char *m_title, int m_windowHeight, int m_windowWidth, Uint32 flags);
+  MyGame(
+      const char *m_title,
+      int m_windowHeight,
+      int m_windowWidth,
+      Uint32 flags
+  );
 
   bool init();
 

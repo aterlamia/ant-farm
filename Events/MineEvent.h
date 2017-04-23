@@ -14,9 +14,13 @@ class MineEvent : public Ember::EventInterface {
 public:
   std::string getType() override;
 
-  MineEvent(Tile *m_tile);
+  MineEvent(
+      Tile *m_tile,
+      const Ember::Position2d &m_position
+  );
 
   Ember::EventMessage getMessage() override;
+  Ember::Position2d m_position;
 
 protected:
   Tile *m_tile;

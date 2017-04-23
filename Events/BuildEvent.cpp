@@ -11,5 +11,6 @@ std::string BuildEvent::getType() {
 
 Ember::EventMessage BuildEvent::getMessage() {
   Ember::EventMessage message = Ember::EventMessage();
+
   return message;
 }

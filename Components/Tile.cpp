@@ -12,7 +12,8 @@ Tile::Tile(
     const std::string &m_texture,
     const Ember::Position2d &m_position,
     const Ember::Dimension2d &m_dimension,
-    const Ember::Frame &m_frame, Ember::EventBus *m_bus
+    const Ember::Frame &m_frame,
+    Ember::EventBus *m_bus
 )
     : TiledTextureComponent(m_componentType, m_texture, m_position, m_dimension, m_frame, m_bus) {
   m_bus->subscribe(this);
@@ -33,21 +34,31 @@ void Tile::setMineable(bool m_mineable) {
 void Tile::handleEvent(Ember::EventInterface &event) {
 
   if (event.getType() == "mouse_event") {
-    Ember::EventMessage message = event.getMessage();
-
-    if (
-        message.mousePosition.Y >= m_position.Y
-        && message.mousePosition.Y < m_position.Y + m_dimension.height
-        && message.mousePosition.X >= m_position.X
-        && message.mousePosition.X < m_position.X + m_dimension.width
-        ) {
-      m_frame = Ember::Frame(1, 5);
-      m_bus->fire(
-          new MineEvent(
-              this
-          )
-      );
-    }
-
+    handleMouseEvent(event);
+  } else if (event.getType() == "mine_event") {
+    handleMineEvent(event);
   }
+}
+
+void Tile::handleMouseEvent(Ember::EventInterface &event) {
+  Ember::EventMessage message = event.getMessage();
+
+  if (
+      message.mousePosition.Y >= m_position.Y
+      && message.mousePosition.Y < m_position.Y + m_dimension.height
+      && message.mousePosition.X >= m_position.X
+      && message.mousePosition.X < m_position.X + m_dimension.width
+      ) {
+    m_frame = Ember::Frame(1, 5);
+    m_bus->fire(
+        new MineEvent(
+            this,
+            Ember::Position2d(m_position.X / m_dimension.width, m_position.Y / m_dimension.height)
+        )
+    );
+  }
+}
+
+void Tile::handleMineEvent(Ember::EventInterface &event) {
+
 }

@@ -19,7 +19,7 @@ public:
 
 protected:
   int m_time;
-  Ant *m_worker;
+//  Ant *m_worker;
 };
 
 

@@ -25,22 +25,25 @@ public:
       const std::string &m_texture,
       const Ember::Position2d &m_position,
       const Ember::Dimension2d &m_dimension,
-      const Ember::Frame &m_frame, Ember::EventBus *m_bus
+      const Ember::Frame &m_frame,
+      Ember::EventBus *m_bus
   );
 
   void handleEvent(Ember::EventInterface &event) override;
+  void setTileType(TILE_TYPE m_tileType);
+  void setHealth(int m_health);
+  void setMineable(bool m_mineable);
+
+
+protected:
+  void handleMineEvent(Ember::EventInterface &event);
+  void handleMouseEvent(Ember::EventInterface &event);
 
 protected:
   TILE_TYPE m_tileType = TILE_NONE;
   int m_health = 100;
   bool m_mineable = true;
-public:
-  void setTileType(TILE_TYPE m_tileType);
 
-  void setHealth(int m_health);
-
-  void setMineable(bool m_mineable);
 };
-
 
 #endif //ANTFARM_TILE_H

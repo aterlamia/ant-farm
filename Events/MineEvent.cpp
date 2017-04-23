@@ -11,9 +11,16 @@ std::string MineEvent::getType() {
 
 Ember::EventMessage MineEvent::getMessage() {
   Ember::EventMessage message = Ember::EventMessage();
+
+  message.object = m_tile->getLinkedObject();
+
   return message;
 }
 
-MineEvent::MineEvent(Tile *m_tile)
-    : m_tile(m_tile) {}
+MineEvent::MineEvent(
+    Tile *m_tile,
+    const Ember::Position2d &m_position
+) : m_position(m_position)
+    , m_tile(m_tile) {}
+
 

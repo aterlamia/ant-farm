@@ -20,7 +20,11 @@ public:
 
 private:
 public:
-  Map(Ember::EventBus *m_bus, int m_tilesRow, int m_tilesColumn);
+  Map(
+      Ember::EventBus *m_bus,
+      int m_tilesRow,
+      int m_tilesColumn
+  );
 
 private:
   std::vector<std::vector<Ember::GameObject *>> m_map;

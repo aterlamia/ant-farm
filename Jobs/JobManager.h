@@ -8,6 +8,7 @@
 
 
 #include "JobInterface.h"
+#include "../Events/MineEvent.h"
 
 class JobManager : public Ember::EventListenerInterface {
 public:
@@ -19,6 +20,7 @@ public:
 
 protected:
   std::vector<JobInterface *> m_jobs;
+  void handleEvent(MineEvent &event);
 };
 
 

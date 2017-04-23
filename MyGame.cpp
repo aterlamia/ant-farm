@@ -3,21 +3,25 @@
 // Part of the Ember-engine
 //
 
-#include <Components/TextureComponent.h>
-#include "Game.h"
+#include "MyGame.h"
 #include "Assets/StaticAssetLoader.h"
 #include "Layer/MapLayer.h"
 #include "Layer/CharacterLayer.h"
 
-Game::Game(const char *m_title, int m_windowHeight, int m_windowWidth, Uint32 flags)
+MyGame::MyGame(
+    const char *m_title,
+    int m_windowHeight,
+    int m_windowWidth,
+    Uint32 flags
+)
     : Ember::Game(m_title, m_windowHeight, m_windowWidth, flags) {
 }
 
-void Game::registerAssetLoaders(Ember::EventBus *pBus) {
+void MyGame::registerAssetLoaders(Ember::EventBus *pBus) {
   m_assetLoaders.push_back(new StaticAssetLoader(m_bus));
 }
 
-bool Game::init() {
+bool MyGame::init() {
   if (Ember::Game::init()) {
     m_jobManager = new JobManager();
 
@@ -28,7 +32,7 @@ bool Game::init() {
   return false;
 }
 
-void Game::loadScene() {
+void MyGame::loadScene() {
   Ember::TextureComponent *component = new Ember::TextureComponent(
       Ember::COMPONENT_VISUAL,
       "LogoSmall",
@@ -55,7 +59,7 @@ void Game::loadScene() {
 
 }
 
-void Game::render() {
+void MyGame::render() {
   for (std::vector<LayerInterface *>::size_type i = 0; i != m_layers.size(); i++) {
     m_layers[i]->render();
   }
