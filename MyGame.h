@@ -29,6 +29,7 @@ protected:
   void loadScene();
 
   void render() override;
+  void update() override;
 
   std::vector<LayerInterface *> m_layers;
 

@@ -7,6 +7,7 @@
 #include "Assets/StaticAssetLoader.h"
 #include "Layer/MapLayer.h"
 #include "Layer/CharacterLayer.h"
+#include "System/ServiceContainer.h"
 
 MyGame::MyGame(
     const char *m_title,
@@ -23,6 +24,7 @@ void MyGame::registerAssetLoaders(Ember::EventBus *pBus) {
 
 bool MyGame::init() {
   if (Ember::Game::init()) {
+    ServiceContainer::GetInstance()->Provide(new JobManager());
     m_jobManager = new JobManager();
 
     m_bus->subscribe(m_jobManager);
@@ -63,4 +65,12 @@ void MyGame::render() {
   for (std::vector<LayerInterface *>::size_type i = 0; i != m_layers.size(); i++) {
     m_layers[i]->render();
   }
+}
+
+void MyGame::update() {
+  Ember::Game::update();
+  for (std::vector<LayerInterface *>::size_type i = 0; i != m_layers.size(); i++) {
+    m_layers[i]->update();
+  }
+
 }

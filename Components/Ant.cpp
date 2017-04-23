@@ -4,6 +4,7 @@
 //
 
 #include "Ant.h"
+#include "../System/ServiceContainer.h"
 
 Ant::Ant(
     Ember::EMBER_COMPONENT m_componentType,
@@ -51,7 +52,13 @@ void Ant::handleUpdates() {
     return;
   }
 
-//  if (m_job == nullptr) {
-//    m_bus->fire()
-//  }
+  if (m_job == nullptr) {
+    // Get Job.
+    std::cout << "Getting job \n";
+    m_job = ServiceContainer::GetInstance()->getJobManager().assingJob(this);
+
+    std::cout << m_job;
+  }
+
+
 }

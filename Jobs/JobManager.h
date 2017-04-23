@@ -17,10 +17,11 @@ public:
   void handleEvent(Ember::EventInterface &event) override;
 
   void addJob(JobInterface *job);
-
+  JobInterface *assingJob(Ant *ant);
 protected:
   std::vector<JobInterface *> m_jobs;
   void handleEvent(MineEvent &event);
+
 };
 
 

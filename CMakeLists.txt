@@ -36,6 +36,8 @@ set(SOURCE_FILES
     Jobs/MineJob.h
     Layer/OverlayLayer.cpp
     Layer/OverlayLayer.h
+    System/ServiceContainer.cpp
+    System/ServiceContainer.h
     )
 
 
@@ -83,7 +85,7 @@ set(SOURCE_FILES_ENGINE
     Engine/Events/MouseEvent.h
     Engine/Events/EventType.h
     Engine/System/LogEnums.h
-    )
+    Layer/LayerManager.h)
 
 
 add_executable(AntFarm ${SOURCE_FILES_ENGINE} ${SOURCE_FILES})

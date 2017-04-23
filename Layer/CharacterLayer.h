@@ -13,7 +13,7 @@
 class CharacterLayer : public LayerInterface {
 public:
   void render() override;
-
+  void update() override;
   CharacterLayer(Ember::EventBus *m_bus);
 
 private:

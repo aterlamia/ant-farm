@@ -19,4 +19,10 @@ namespace Ember {
       m_components[i]->handleGraphical();
     }
   }
+
+  void GameObject::update() {
+    for (std::vector<ComponentInterface *>::size_type i = 0; i != m_components.size(); i++) {
+      m_components[i]->handleUpdates();
+    }
+  }
 };

@@ -6,20 +6,23 @@
 #ifndef ANTFARM_JOBINTERFACE_H
 #define ANTFARM_JOBINTERFACE_H
 
-
-#include "../Components/Ant.h"
+// Forward declare ant.
+class Ant;
 
 class JobInterface {
 public:
   virtual void doJob() = 0;
 
-  virtual void setWorker() = 0;
+  virtual void setWorker(Ant *worker);
+
+  virtual bool hasWorker();
 
   virtual void removeWorker() = 0;
 
+
 protected:
   int m_time;
-//  Ant *m_worker;
+  Ant *m_worker = nullptr;
 };
 
 

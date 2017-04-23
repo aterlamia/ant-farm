@@ -13,6 +13,7 @@
 class MapLayer : public LayerInterface {
 
 public:
+  void update() override;
   MapLayer(Map *m_map);
 
   void render() override;

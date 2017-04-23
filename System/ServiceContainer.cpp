@@ -3,13 +3,20 @@
 //
 #include "ServiceContainer.h"
 
-Ember::Logger::iLogger *Ember::ServiceContainer::mvpLoggerService = 0;
+ServiceContainer* ServiceContainer::instance = nullptr;
 
-Ember::Logger::iLogger &Ember::ServiceContainer::getLogger() { return *mvpLoggerService; }
+JobManager *ServiceContainer::m_jobManager = 0;
 
-void Ember::ServiceContainer::Provide(Ember::Logger::iLogger *service) {
-  mvpLoggerService = service;
+void ServiceContainer::Initialize() {
+
 }
 
-void Ember::ServiceContainer::Initialize() {
+JobManager &ServiceContainer::getJobManager() {
+  return *m_jobManager;
 }
+
+void ServiceContainer::Provide(JobManager *service) {
+  m_jobManager = service;
+}
+
+ServiceContainer::ServiceContainer() {}

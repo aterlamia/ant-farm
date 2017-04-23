@@ -34,7 +34,6 @@ public:
   void setHealth(int m_health);
   void setMineable(bool m_mineable);
 
-
 protected:
   void handleMineEvent(Ember::EventInterface &event);
   void handleMouseEvent(Ember::EventInterface &event);

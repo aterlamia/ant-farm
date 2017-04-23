@@ -7,7 +7,25 @@
 #include "MineJob.h"
 
 JobInterface *JobManager::getFreeJob() {
+//
+//  for (std::vector<JobInterface *>::size_type i = 0; i != m_jobs.size(); i++) {
+//    if (m_jobs[i]->hasWorker() == false) {
+//
+//    }
+//  }
+
   return nullptr;
+}
+
+
+JobInterface *JobManager::assingJob(Ant *ant) {
+  for (std::vector<JobInterface *>::size_type i = 0; i != m_jobs.size(); i++) {
+    if (m_jobs[i]->hasWorker() == false) {
+      m_jobs[i]->setWorker(ant);
+
+      return m_jobs[i];
+    }
+  }
 }
 
 void JobManager::addJob(JobInterface *job) {

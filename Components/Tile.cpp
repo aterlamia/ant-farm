@@ -5,6 +5,8 @@
 
 #include "Tile.h"
 #include "../Events/MineEvent.h"
+#include "../System/ServiceContainer.h"
+#include "../Jobs/MineJob.h"
 #include <Events/LogEVent.h>
 
 Tile::Tile(
@@ -49,13 +51,23 @@ void Tile::handleMouseEvent(Ember::EventInterface &event) {
       && message.mousePosition.X >= m_position.X
       && message.mousePosition.X < m_position.X + m_dimension.width
       ) {
-    m_frame = Ember::Frame(1, 5);
-    m_bus->fire(
-        new MineEvent(
-            this,
-            Ember::Position2d(m_position.X / m_dimension.width, m_position.Y / m_dimension.height)
-        )
-    );
+
+//    m_bus->fire(
+//        new MineEvent(
+//            this,
+//            Ember::Position2d(m_position.X / m_dimension.width, m_position.Y / m_dimension.height)
+//        )
+//    );
+
+    if (m_mineable ) {
+
+      // Temp line to visualize
+      m_frame = Ember::Frame(1, 5);
+
+      ServiceContainer::GetInstance()->getJobManager().addJob(
+          new MineJob(Ember::Position2d(m_position.X / m_dimension.width, m_position.Y / m_dimension.height))
+      );
+    }
   }
 }
 

@@ -30,3 +30,9 @@ CharacterLayer::CharacterLayer(Ember::EventBus *m_bus)
 
   characters.push_back(worker);
 }
+
+void CharacterLayer::update() {
+  for (std::vector<Ember::GameObject *>::size_type i = 0; i != characters.size(); i++) {
+    characters[i]->update();
+  }
+}

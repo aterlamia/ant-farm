@@ -17,3 +17,7 @@ MapLayer::MapLayer(Map *m_map)
 void MapLayer::render() {
   m_map->render();
 }
+
+void MapLayer::update() {
+
+}

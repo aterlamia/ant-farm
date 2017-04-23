@@ -24,6 +24,8 @@ namespace Ember {
     void addComponent(ComponentInterface *component);
 
     void render();
+
+    void update();
   };
 };
 

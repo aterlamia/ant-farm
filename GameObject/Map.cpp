@@ -35,7 +35,7 @@ void Map::init() {
     for (int j = 0; j < m_tilesColumn; j++) {
 
       int randColumn = rand() % 8 + 1;
-      int randRow = rand() % 7 + 1;
+      int randRow = rand() % 5 + 1;
       Ember::GameObject *tile = new Ember::GameObject("Tile");
       Tile *tileComponent = new Tile(Ember::COMPONENT_VISUAL, "Tile",
                                      Ember::Position2d(0 + i * 64, 0 + j * 64),
@@ -46,10 +46,24 @@ void Map::init() {
       tileComponent->setTileType(Tile::TILE_SOIL);
 
 
-      if (i == 8 && j == 8) {
-        tileComponent->setFrame(Ember::Frame(8, 8));
+      if (i == 6 && j == 8) {
+        tileComponent->setFrame(Ember::Frame(8, 5));
         tileComponent->setTileType(Tile::TILE_NONE);
+        tileComponent->setMineable(false);
       }
+
+      if (i == 7 && j == 8) {
+        tileComponent->setFrame(Ember::Frame(8, 6));
+        tileComponent->setTileType(Tile::TILE_NONE);
+        tileComponent->setMineable(false);
+      }
+
+      if (i == 8   && j == 8) {
+        tileComponent->setFrame(Ember::Frame(8, 7));
+        tileComponent->setTileType(Tile::TILE_NONE);
+        tileComponent->setMineable(false);
+      }
+
       tile->addComponent(
           tileComponent
       );

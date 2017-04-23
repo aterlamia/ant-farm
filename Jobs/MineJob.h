@@ -16,7 +16,7 @@ protected:
 public:
   MineJob(const Ember::Position2d &m_position);
   void doJob() override;
-  void setWorker() override;
+  void setWorker();
   void removeWorker() override;
 };
 

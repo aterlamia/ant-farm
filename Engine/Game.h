@@ -55,7 +55,7 @@ namespace Ember {
 
     void handleInput();
 
-    void update();
+    virtual void update();
 
     void internalRender();
 
