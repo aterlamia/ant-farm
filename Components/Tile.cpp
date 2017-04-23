@@ -12,12 +12,11 @@
 Tile::Tile(
     Ember::EMBER_COMPONENT m_componentType,
     const std::string &m_texture,
-    const Ember::Position2d &m_position,
     const Ember::Dimension2d &m_dimension,
     const Ember::Frame &m_frame,
     Ember::EventBus *m_bus
 )
-    : TiledTextureComponent(m_componentType, m_texture, m_position, m_dimension, m_frame, m_bus) {
+    : TiledTextureComponent(m_componentType, m_texture, m_dimension, m_frame, m_bus) {
   m_bus->subscribe(this);
 }
 
@@ -46,10 +45,10 @@ void Tile::handleMouseEvent(Ember::EventInterface &event) {
   Ember::EventMessage message = event.getMessage();
 
   if (
-      message.mousePosition.Y >= m_position.Y
-      && message.mousePosition.Y < m_position.Y + m_dimension.height
-      && message.mousePosition.X >= m_position.X
-      && message.mousePosition.X < m_position.X + m_dimension.width
+      message.mousePosition.Y >= m_object->getPosition().Y
+      && message.mousePosition.Y < m_object->getPosition().Y + m_dimension.height
+      && message.mousePosition.X >= m_object->getPosition().X
+      && message.mousePosition.X < m_object->getPosition().X + m_dimension.width
       ) {
 
 //    m_bus->fire(
@@ -65,7 +64,7 @@ void Tile::handleMouseEvent(Ember::EventInterface &event) {
       m_frame = Ember::Frame(1, 5);
 
       ServiceContainer::GetInstance()->getJobManager().addJob(
-          new MineJob(Ember::Position2d(m_position.X / m_dimension.width, m_position.Y / m_dimension.height))
+          new MineJob(Ember::Position2d(m_object->getPosition().X / m_dimension.width, m_object->getPosition().Y / m_dimension.height))
       );
     }
   }

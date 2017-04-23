@@ -11,6 +11,7 @@
 #include "GameObject/Map.h"
 #include "Layer/LayerInterface.h"
 #include "Jobs/JobManager.h"
+#include "Layer/LayerManager.h"
 
 class MyGame : public Ember::Game {
 public:
@@ -30,10 +31,6 @@ protected:
 
   void render() override;
   void update() override;
-
-  std::vector<LayerInterface *> m_layers;
-
-  JobManager *m_jobManager;
 };
 
 

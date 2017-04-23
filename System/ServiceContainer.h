@@ -1,17 +1,23 @@
 #ifndef EMBER_SERVICECONTAINER_H
 #define EMBER_SERVICECONTAINER_H
 
+#include <SceneManager.h>
 #include "../Jobs/JobManager.h"
 #include "../Layer/LayerManager.h"
 
 class ServiceContainer {
 private:
   static JobManager *m_jobManager;
-  ServiceContainer();
+  static SceneManager *m_sceneManager;
   static ServiceContainer *instance;
 
-public:
+  ServiceContainer();
 
+public:
+/**
+ * Singleton
+ * @return
+ */
   static ServiceContainer *const GetInstance() {
     if (instance == nullptr) {
       instance = new ServiceContainer();
@@ -20,14 +26,11 @@ public:
     return instance;
   }
 
-  static void Initialize();
-
   static JobManager &getJobManager();
+  static SceneManager &getSceneManager();
 
-  /**
-   * @param service
-   */
   static void Provide(JobManager *service);
+  static void Provide(SceneManager *service);
 
 };
 

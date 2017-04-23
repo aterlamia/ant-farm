@@ -20,12 +20,11 @@ namespace Ember {
   TiledTextureComponent::TiledTextureComponent(
       EMBER_COMPONENT m_componentType,
       const std::string &m_texture,
-      const Position2d &m_position,
       const Dimension2d &m_dimension,
       const Frame &m_frame,
       EventBus *m_bus
   )
-      : TextureComponent(m_componentType, m_texture, m_position, m_dimension, m_bus)
+      : TextureComponent(m_componentType, m_texture, m_dimension, m_bus)
         , m_frame(m_frame) {}
 
   /**
@@ -34,7 +33,7 @@ namespace Ember {
   void TiledTextureComponent::handleGraphical() {
     m_bus->fire(
         new RenderFrameEvent(
-            m_position,
+            m_object->getPosition(),
             m_dimension,
             m_frame,
             m_texture

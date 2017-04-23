@@ -16,12 +16,11 @@ void CharacterLayer::render() {
 CharacterLayer::CharacterLayer(Ember::EventBus *m_bus)
     : m_bus(m_bus) {
 
-  Ember::GameObject *worker = new Ember::GameObject("Character");
+  Ember::GameObject *worker = new Ember::GameObject("Character", Ember::Position2d(8 * 64, 8 * 64));
   worker->addComponent(
       new Ant(
           Ember::COMPONENT_VISUAL,
           "Characters",
-          Ember::Position2d(8 * 64, 8 * 64),
           Ember::Dimension2d(64, 64),
           Ember::Frame(1, 2),
           m_bus

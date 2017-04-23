@@ -10,12 +10,9 @@
 #include "JobInterface.h"
 
 class MineJob : public JobInterface {
-protected:
-  Ember::Position2d m_position = {0.0, 0.0};
-
 public:
-  MineJob(const Ember::Position2d &m_position);
   void doJob() override;
+  MineJob(const Ember::Position2d &m_position);
   void setWorker();
   void removeWorker() override;
 };

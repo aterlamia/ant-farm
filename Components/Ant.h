@@ -15,7 +15,6 @@ public:
   Ant(
       Ember::EMBER_COMPONENT m_componentType,
       const std::string &m_texture,
-      const Ember::Position2d &m_position,
       const Ember::Dimension2d &m_dimension,
       const Ember::Frame &m_frame,
       Ember::EventBus *m_bus

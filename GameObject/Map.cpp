@@ -34,32 +34,31 @@ void Map::init() {
     std::vector<Ember::GameObject *> row;
     for (int j = 0; j < m_tilesColumn; j++) {
 
-      int randColumn = rand() % 8 + 1;
-      int randRow = rand() % 5 + 1;
-      Ember::GameObject *tile = new Ember::GameObject("Tile");
+      int column = i % 16 + 1;
+      int row1 = j % 8 + 1;
+      Ember::GameObject *tile = new Ember::GameObject("Tile", Ember::Position2d(0 + i * 64, 0 + j * 64));
       Tile *tileComponent = new Tile(Ember::COMPONENT_VISUAL, "Tile",
-                                     Ember::Position2d(0 + i * 64, 0 + j * 64),
                                      Ember::Dimension2d(64, 64),
-                                     Ember::Frame(randRow, randColumn),
+                                     Ember::Frame(row1, column),
                                      m_bus);
 
       tileComponent->setTileType(Tile::TILE_SOIL);
 
 
       if (i == 6 && j == 8) {
-        tileComponent->setFrame(Ember::Frame(8, 5));
+        tileComponent->setFrame(Ember::Frame(16, 5));
         tileComponent->setTileType(Tile::TILE_NONE);
         tileComponent->setMineable(false);
       }
 
       if (i == 7 && j == 8) {
-        tileComponent->setFrame(Ember::Frame(8, 6));
+        tileComponent->setFrame(Ember::Frame(16, 6));
         tileComponent->setTileType(Tile::TILE_NONE);
         tileComponent->setMineable(false);
       }
 
-      if (i == 8   && j == 8) {
-        tileComponent->setFrame(Ember::Frame(8, 7));
+      if (i == 8 && j == 8) {
+        tileComponent->setFrame(Ember::Frame(16, 7));
         tileComponent->setTileType(Tile::TILE_NONE);
         tileComponent->setMineable(false);
       }

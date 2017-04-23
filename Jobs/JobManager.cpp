@@ -29,7 +29,8 @@ JobInterface *JobManager::assingJob(Ant *ant) {
 }
 
 void JobManager::addJob(JobInterface *job) {
-  std::cout << "Job added";
+  // Ad mbus to the service container so we can use it easier.
+  std::cout << "Job added \n";
   m_jobs.push_back(job);
 }
 

@@ -20,7 +20,6 @@ namespace Ember {
     TiledTextureComponent(
         EMBER_COMPONENT m_componentType,
         const std::string &m_texture,
-        const Position2d &m_position,
         const Dimension2d &m_dimension,
         const Frame &m_frame,
         EventBus *m_bus

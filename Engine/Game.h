@@ -41,7 +41,7 @@ namespace Ember {
         Uint32 flags
     );
 
-    bool init();
+    virtual bool init();
 
     bool run();
 

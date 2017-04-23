@@ -9,6 +9,7 @@
 
 #include <vector>
 #include <string>
+#include <ValueObjects/Position2d.h>
 #include "../Components/ComponentInterface.h"
 
 namespace Ember {
@@ -18,14 +19,19 @@ namespace Ember {
   private:
     std::vector<ComponentInterface *> m_components;
     std::string m_name;
+    Position2d m_position;
   public:
-    GameObject(const std::string &m_name);
+    GameObject(
+          const std::string &m_name,
+          Position2d m_position
+      );
 
     void addComponent(ComponentInterface *component);
 
     void render();
 
     void update();
+    const Position2d &getPosition() const;
   };
 };
 

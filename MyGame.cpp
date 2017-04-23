@@ -5,7 +5,6 @@
 
 #include "MyGame.h"
 #include "Assets/StaticAssetLoader.h"
-#include "Layer/MapLayer.h"
 #include "Layer/CharacterLayer.h"
 #include "System/ServiceContainer.h"
 
@@ -23,12 +22,14 @@ void MyGame::registerAssetLoaders(Ember::EventBus *pBus) {
 }
 
 bool MyGame::init() {
+
+  LayerManager *layerManager = new LayerManager();
+  ServiceContainer::GetInstance()->Provide(new SceneManager(layerManager));
+
   if (Ember::Game::init()) {
-    ServiceContainer::GetInstance()->Provide(new JobManager());
-    m_jobManager = new JobManager();
-
-    m_bus->subscribe(m_jobManager);
-
+    JobManager *jobManager = new JobManager();
+    m_bus->subscribe(jobManager);
+    ServiceContainer::GetInstance()->Provide(jobManager);
     return true;
   }
   return false;
@@ -38,16 +39,17 @@ void MyGame::loadScene() {
   Ember::TextureComponent *component = new Ember::TextureComponent(
       Ember::COMPONENT_VISUAL,
       "LogoSmall",
-      Ember::Position2d(m_windowHeight - 100, m_windowHeight - 90),
       Ember::Dimension2d(100, 90),
       m_bus
   );
 
-  Ember::GameObject *object = new Ember::GameObject("Logo");
+  Ember::GameObject *object = new Ember::GameObject(
+      "Logo",
+      Ember::Position2d(m_windowHeight - 100, m_windowHeight - 90)
+  );
   object->addComponent(component);
 
   m_gameobjects.push_back(object);
-
 
   Map *map = new Map(m_bus, 16, 16);
   map->init();
@@ -55,22 +57,30 @@ void MyGame::loadScene() {
   MapLayer *mapLayer = new MapLayer(map);
   CharacterLayer *characterLayer = new CharacterLayer(m_bus);
 
-  m_layers.push_back(mapLayer);
-  m_layers.push_back(characterLayer);
-
-
+  LayerManager *manager = ServiceContainer::GetInstance()->getSceneManager().getLayerManager();
+  manager->addLayer(LayerManager::LAYER_MAP, mapLayer);
+  manager->addLayer(LayerManager::LAYER_CHARCTERS, characterLayer);
 }
 
 void MyGame::render() {
-  for (std::vector<LayerInterface *>::size_type i = 0; i != m_layers.size(); i++) {
-    m_layers[i]->render();
+  LayerManager *manager = ServiceContainer::GetInstance()->getSceneManager().getLayerManager();
+
+  for (auto it = manager->getLayers().begin(); it != manager->getLayers().end(); ++it) {
+    // Eww, make a NUlL layer or something
+    if (it->second != nullptr) {
+      it->second->render();
+    }
   }
 }
 
 void MyGame::update() {
   Ember::Game::update();
-  for (std::vector<LayerInterface *>::size_type i = 0; i != m_layers.size(); i++) {
-    m_layers[i]->update();
-  }
+  LayerManager *manager = ServiceContainer::GetInstance()->getSceneManager().getLayerManager();
 
+  for (auto it = manager->getLayers().begin(); it != manager->getLayers().end(); ++it) {
+    // Eww, make a NUlL layer or something
+    if (it->second != nullptr) {
+      it->second->update();
+    }
+  }
 }

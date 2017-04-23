@@ -69,6 +69,10 @@ public:
   MapLayer *getMapLayer() {
     return static_cast<MapLayer *>(m_layers[LAYER_MAP]);
   }
+
+  const std::map<LayerTypes, LayerInterface *> &getLayers() const {
+    return m_layers;
+  }
 };
 
 

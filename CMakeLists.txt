@@ -85,7 +85,7 @@ set(SOURCE_FILES_ENGINE
     Engine/Events/MouseEvent.h
     Engine/Events/EventType.h
     Engine/System/LogEnums.h
-    Layer/LayerManager.h)
+    Layer/LayerManager.h Engine/SceneManager.cpp Engine/SceneManager.h GameObject/TileObject.cpp GameObject/TileObject.h)
 
 
 add_executable(AntFarm ${SOURCE_FILES_ENGINE} ${SOURCE_FILES})

@@ -20,13 +20,11 @@ namespace Ember {
     TextureComponent(
         EMBER_COMPONENT m_componentType,
         const std::string &m_texture,
-        const Position2d &m_position,
         const Dimension2d &m_dimension,
         EventBus *m_bus
     );
 
   protected:
-    Position2d m_position;
     Dimension2d m_dimension;
     EventBus *m_bus;
   public:
