@@ -49,16 +49,15 @@ void Ant::handleUpdates() {
 
   if (m_job == nullptr) {
     // Get Job.
-    std::cout << "Getting job \n";
     m_job = ServiceContainer::GetInstance()->getJobManager().assingJob(this);
 
     if (m_job != nullptr) {
-
-
       MapLayer *layer = ServiceContainer::getSceneManager().getLayerManager()->getMapLayer();
+//      TileObject *object = layer->getTileObjectByPosition(m_job->getPosition());
 
-      std::cout << m_job->getPosition().Y << "\n";
-      std::cout << m_job->getPosition().X << "\n";
+      Ember::Position2d pos = {m_object->getPosition().X / 64, m_object->getPosition().Y / 64};
+      layer->getPath(pos, m_job->getPosition());
+
     }
   } else {
   }

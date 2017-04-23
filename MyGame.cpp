@@ -36,25 +36,9 @@ bool MyGame::init() {
 }
 
 void MyGame::loadScene() {
-  Ember::TextureComponent *component = new Ember::TextureComponent(
-      Ember::COMPONENT_VISUAL,
-      "LogoSmall",
-      Ember::Dimension2d(100, 90),
-      m_bus
-  );
+  MapLayer *mapLayer = new MapLayer(m_bus, 16, 16);
+  mapLayer->init();
 
-  Ember::GameObject *object = new Ember::GameObject(
-      "Logo",
-      Ember::Position2d(m_windowHeight - 100, m_windowHeight - 90)
-  );
-  object->addComponent(component);
-
-  m_gameobjects.push_back(object);
-
-  Map *map = new Map(m_bus, 16, 16);
-  map->init();
-
-  MapLayer *mapLayer = new MapLayer(map);
   CharacterLayer *characterLayer = new CharacterLayer(m_bus);
 
   LayerManager *manager = ServiceContainer::GetInstance()->getSceneManager().getLayerManager();

@@ -19,12 +19,13 @@ namespace Ember {
   private:
     std::vector<ComponentInterface *> m_components;
     std::string m_name;
+  protected:
     Position2d m_position;
   public:
     GameObject(
-          const std::string &m_name,
-          Position2d m_position
-      );
+        const std::string &m_name,
+        Position2d m_position
+    );
 
     void addComponent(ComponentInterface *component);
 

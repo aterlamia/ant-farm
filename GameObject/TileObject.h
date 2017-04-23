@@ -12,12 +12,23 @@
 class TileObject : public Ember::GameObject {
 public:
   TileObject(
-        const std::string &m_name,
-        Ember::Position2d m_position
-    );
+      const std::string &m_name,
+      Ember::Position2d m_position
+  );
 
 protected:
-  Ember::Position2d m_position;
+  bool minable = false;
+
+public:
+  bool isMinable() const;
+  void setMinable(bool minable);
+  bool isPassable() const;
+  void setPassable(bool passable);
+  int getHealth() const;
+  void setHealth(int health);
+protected:
+  bool passable = false;
+  int health = 100;
 };
 
 

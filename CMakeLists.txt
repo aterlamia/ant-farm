@@ -12,8 +12,6 @@ set(SOURCE_FILES
     MyGame.h
     Assets/StaticAssetLoader.cpp
     Assets/StaticAssetLoader.h
-    GameObject/Map.cpp
-    GameObject/Map.h
     Components/Tile.cpp
     Components/Tile.h
     Layer/LayerInterface.h
