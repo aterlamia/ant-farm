@@ -16,11 +16,11 @@ public:
 
   MineEvent(
       Tile *m_tile,
-      const Ember::Position2d &m_position
+      const Ember::Vector2D &m_position
   );
 
   Ember::EventMessage getMessage() override;
-  Ember::Position2d m_position;
+  Ember::Vector2D m_position;
 
 protected:
   Tile *m_tile;

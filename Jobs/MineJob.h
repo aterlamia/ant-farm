@@ -12,7 +12,7 @@
 class MineJob : public JobInterface {
 public:
   void doJob() override;
-  MineJob(const Ember::Position2d &m_position);
+  MineJob(const Ember::Vector2D &m_position);
   void setWorker();
   void removeWorker() override;
 };

@@ -70,6 +70,7 @@ namespace Ember {
     void loadAssets();
 
     virtual void loadScene() = 0;
+    virtual void postRenderCreate(SDL_Renderer *pRenderer);
   };
 };
 

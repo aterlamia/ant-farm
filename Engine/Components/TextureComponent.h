@@ -8,7 +8,7 @@
 
 #include "ComponentInterface.h"
 #include "../Events/EventBus.h"
-#include "../ValueObjects/Position2d.h"
+#include "ValueObjects/Vector2D.h"
 #include "../ValueObjects/Dimension2d.h"
 #include <string>
 

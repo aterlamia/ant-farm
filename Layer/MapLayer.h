@@ -26,11 +26,11 @@ public:
       int m_tilesColumn
   );
 
-  TileObject * getTileObjectByPosition(Ember::Position2d);
+  TileObject * getTileObjectByPosition(Ember::Vector2D);
 
   std::vector<TileObject *> getPath(
-      Ember::Position2d begin,
-      Ember::Position2d end
+      Ember::Vector2D begin,
+      Ember::Vector2D end
   );
 
 
@@ -40,14 +40,14 @@ protected:
   int m_tilesRow;
   int m_tilesColumn;
   std::vector<TileObject *> getTilePath(
-      Ember::Position2d begin,
-      Ember::Position2d end,
-      Ember::Position2d cameFrom,
+      Ember::Vector2D begin,
+      Ember::Vector2D end,
+      Ember::Vector2D cameFrom,
       std::vector<TileObject *> route
   );
   bool arrived(
-      Ember::Position2d next,
-      Ember::Position2d end
+      Ember::Vector2D next,
+      Ember::Vector2D end
   );
 };
 

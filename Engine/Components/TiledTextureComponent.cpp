@@ -4,7 +4,7 @@
 //
 
 #include "TiledTextureComponent.h"
-#include "../Events/RenderFrameEvent.h"
+#include "../../System/ServiceContainer.h"
 
 namespace Ember {
   /**
@@ -31,13 +31,14 @@ namespace Ember {
    * Handle rendering or other graphic stuff.
    */
   void TiledTextureComponent::handleGraphical() {
-    m_bus->fire(
-        new RenderFrameEvent(
-            m_object->getPosition(),
-            m_dimension,
-            m_frame,
-            m_texture
-        )
+    ServiceContainer::GetInstance()->getTextureManager().drawFrame(
+        m_texture,
+        m_object->getPosition().X,
+        m_object->getPosition().Y,
+        m_dimension.width,
+        m_dimension.height,
+        m_frame.row,
+        m_frame.column
     );
   }
 

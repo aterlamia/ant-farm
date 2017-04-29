@@ -9,7 +9,7 @@
 #include <SDL_scancode.h>
 #include "string"
 #include "../ValueObjects/Dimension2d.h"
-#include "../ValueObjects/Position2d.h"
+#include "ValueObjects/Vector2D.h"
 #include "../ValueObjects/Frame.h"
 #include "EventType.h"
 #include "../System/LogEnums.h"
@@ -25,10 +25,10 @@ namespace Ember {
     EmberEventType eventType;
     SDL_Scancode key;
     Dimension2d dimension = {0.0, 0.0};
-    Position2d position = {0.0, 0.0};
+    Vector2D position = {0.0, 0.0};
     Frame frame = {0, 0};
     mouse_buttons mouseButton;
-    Position2d mousePosition = {0.0, 0.0};
+    Vector2D mousePosition = {0.0, 0.0};
     GameObject *object;
   };
 };

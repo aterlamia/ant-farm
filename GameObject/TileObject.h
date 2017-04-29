@@ -7,13 +7,13 @@
 #define ANTFARM_TILEOBJECT_H
 
 #include <Objects/GameObject.h>
-#include <ValueObjects/Position2d.h>
+#include <ValueObjects/Vector2D.h>
 
 class TileObject : public Ember::GameObject {
 public:
   TileObject(
       const std::string &m_name,
-      Ember::Position2d m_position
+      Ember::Vector2D m_position
   );
 
 protected:

@@ -19,7 +19,7 @@ Ember::EventMessage MineEvent::getMessage() {
 
 MineEvent::MineEvent(
     Tile *m_tile,
-    const Ember::Position2d &m_position
+    const Ember::Vector2D &m_position
 ) : m_position(m_position)
     , m_tile(m_tile) {}
 

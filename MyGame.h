@@ -8,6 +8,7 @@
 
 
 #include <Game.h>
+#include <utils/fps.h>
 #include "Layer/LayerInterface.h"
 #include "Jobs/JobManager.h"
 #include "Layer/LayerManager.h"
@@ -27,9 +28,10 @@ protected:
   void registerAssetLoaders(Ember::EventBus *pBus) override;
 
   void loadScene();
-
+  void postRenderCreate(SDL_Renderer *pRenderer) override;
   void render() override;
   void update() override;
+  Fps *fps;
 };
 
 

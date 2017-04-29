@@ -24,7 +24,9 @@ namespace Ember {
         m_renderer = SDL_CreateRenderer(
             m_window, -1, 0
         );
+        postRenderCreate(m_renderer);
       }
+
 
       m_bus->fire(
           new LogEVent("Initializing Asset loaders", LOG_CANAL::ASSETS, LOG_TYPE::INFO_TYPE));
@@ -51,9 +53,6 @@ namespace Ember {
   void Game::registerListeners(EventBus *bus) {
     Logger *logger = new Logger();
     bus->subscribe(logger);
-
-    TextureManager *textureManager = new TextureManager(m_renderer, bus);
-    bus->subscribe(textureManager);
 
     bus->subscribe(m_gameState);
   }
@@ -141,6 +140,10 @@ namespace Ember {
 
   Game::~Game() {
 
+
+  }
+
+  void Game::postRenderCreate(SDL_Renderer *pRenderer) {
 
   }
 

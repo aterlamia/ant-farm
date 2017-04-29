@@ -14,7 +14,7 @@ namespace Ember {
     SDL_Surface *pTempSurface = IMG_Load(fileName.c_str());
 
     if (pTempSurface == 0) {
-      m_bus->fire(new LogEVent("Error could not find file" + fileName, LOG_CANAL::TEXTURES,
+      m_bus->fire(new LogEVent("Error could not find file " + fileName, LOG_CANAL::TEXTURES,
                                LOG_TYPE::ERROR_TYPE));
       return false;
     }

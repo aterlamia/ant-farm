@@ -7,13 +7,13 @@
 #define EMBERENGINE_RENDEREVENT_H
 
 #include "EventInterface.h"
-#include "../ValueObjects/Position2d.h"
+#include "ValueObjects/Vector2D.h"
 #include "../ValueObjects/Dimension2d.h"
 
 namespace Ember {
   class RenderEvent : public EventInterface {
   protected:
-    Position2d m_position;
+    Vector2D m_position;
     Dimension2d m_dimension;
     std::string m_name;
   public:
@@ -22,7 +22,7 @@ namespace Ember {
     EventMessage getMessage() override;
 
     RenderEvent(
-        Position2d m_position,
+        Vector2D m_position,
         Dimension2d m_dimension,
         const std::string &m_name
     );

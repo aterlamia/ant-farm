@@ -4,14 +4,14 @@
 //
 
 #include "StaticAssetLoader.h"
-#include <Events/LoadTextureEvent.h>
+#include "../System/ServiceContainer.h"
 
 void StaticAssetLoader::loadAssets() {
-  m_bus->fire(new Ember::LoadTextureEvent("Logo", "assets/logo.png"));
-  m_bus->fire(new Ember::LoadTextureEvent("LogoSmall", "assets/logo-small.png"));
-  m_bus->fire(new Ember::LoadTextureEvent("LogoGray", "assets/logo-gray.png"));
-  m_bus->fire(new Ember::LoadTextureEvent("Tile", "assets/groundtile.png"));
-  m_bus->fire(new Ember::LoadTextureEvent("Characters", "assets/characters.png"));
+  ServiceContainer::GetInstance()->getTextureManager().load("assets/logo.png", "Logo");
+  ServiceContainer::GetInstance()->getTextureManager().load("assets/logo-small.png", "LogoSmall");
+  ServiceContainer::GetInstance()->getTextureManager().load("assets/logo-gray.png", "LogoGray");
+  ServiceContainer::GetInstance()->getTextureManager().load("assets/groundtile.png", "Tile");
+  ServiceContainer::GetInstance()->getTextureManager().load("assets/characters.png", "Characters");
 }
 
 StaticAssetLoader::StaticAssetLoader(Ember::EventBus *bus)

@@ -11,7 +11,7 @@
 #include <Components/TiledTextureComponent.h>
 
 
-class Tile : public Ember::TiledTextureComponent, public Ember::EventListenerInterface {
+class Tile : public Ember::TiledTextureComponent {
 public:
   enum TILE_TYPE {
     TILE_NONE,
@@ -19,7 +19,6 @@ public:
   };
 
 public:
-
   Tile(
       Ember::EMBER_COMPONENT m_componentType,
       const std::string &m_texture,
@@ -28,7 +27,6 @@ public:
       Ember::EventBus *m_bus
   );
 
-  void handleEvent(Ember::EventInterface &event) override;
   void setTileType(TILE_TYPE m_tileType);
   void setHealth(int m_health);
   void setMineable(bool m_mineable);

@@ -7,7 +7,7 @@
 
 TileObject::TileObject(
     const std::string &m_name,
-    Ember::Position2d m_position
+    Ember::Vector2D m_position
 ) : GameObject(m_name, m_position) {}
 
 bool TileObject::isMinable() const {

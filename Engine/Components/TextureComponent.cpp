@@ -9,7 +9,7 @@
 namespace Ember {
 
   void TextureComponent::handleGraphical() {
-    m_bus->fire(new RenderEvent(m_object->getPosition(), m_dimension, m_texture));
+//    m_bus->fire(new RenderEvent(m_object->getPosition(), m_dimension, m_texture));
   }
 
   void TextureComponent::handleInput() {

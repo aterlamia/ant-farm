@@ -26,10 +26,13 @@ bool MyGame::init() {
   LayerManager *layerManager = new LayerManager();
   ServiceContainer::GetInstance()->Provide(new SceneManager(layerManager));
 
+  fps = new Fps();
+
   if (Ember::Game::init()) {
     JobManager *jobManager = new JobManager();
     m_bus->subscribe(jobManager);
     ServiceContainer::GetInstance()->Provide(jobManager);
+
     return true;
   }
   return false;
@@ -55,9 +58,13 @@ void MyGame::render() {
       it->second->render();
     }
   }
+
+  fps->Render();
 }
 
 void MyGame::update() {
+  fps->update();
+
   Ember::Game::update();
   LayerManager *manager = ServiceContainer::GetInstance()->getSceneManager().getLayerManager();
 
@@ -67,4 +74,9 @@ void MyGame::update() {
       it->second->update();
     }
   }
+}
+
+void MyGame::postRenderCreate(SDL_Renderer *pRenderer) {
+  Ember::TextureManager *textureManager = new Ember::TextureManager(pRenderer, m_bus);
+  ServiceContainer::GetInstance()->Provide(textureManager);
 }

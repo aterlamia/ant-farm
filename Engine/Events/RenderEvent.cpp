@@ -23,7 +23,7 @@ namespace Ember {
   }
 
   RenderEvent::RenderEvent(
-      Position2d m_position,
+      Vector2D m_position,
       Dimension2d m_dimension,
       const std::string &m_name
   )

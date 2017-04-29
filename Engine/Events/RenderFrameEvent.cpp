@@ -20,7 +20,7 @@ namespace Ember {
   }
 
   RenderFrameEvent::RenderFrameEvent(
-      const Position2d &m_position,
+      const Vector2D &m_position,
       const Dimension2d &m_dimension,
       const Frame &m_frame,
       const std::string &m_name

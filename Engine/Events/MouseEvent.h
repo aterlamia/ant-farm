@@ -21,13 +21,13 @@ namespace Ember {
     MouseEvent(
         EmberEventType eventType,
         mouse_buttons button,
-        const Position2d &position
+        const Vector2D &position
     );
 
   private:
     EmberEventType m_eventType;
     mouse_buttons m_button;
-    Position2d m_position;
+    Vector2D m_position;
   };
 
 };

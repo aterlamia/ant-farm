@@ -12,9 +12,9 @@ namespace Ember {
   }
 
   GameObject::GameObject(
-        const std::string &m_name,
-        Position2d m_position
-    )
+      const std::string &m_name,
+      Vector2D m_position
+  )
       : m_name(m_name)
         , m_position(m_position) {}
 
@@ -30,7 +30,11 @@ namespace Ember {
     }
   }
 
-  const Position2d &GameObject::getPosition() const {
+  Vector2D &GameObject::getPosition() {
     return m_position;
+  }
+
+  void GameObject::setPosition(Vector2D &m_position) {
+    GameObject::m_position = m_position;
   }
 };

@@ -20,7 +20,7 @@ namespace Ember {
   MouseEvent::MouseEvent(
       EmberEventType eventType,
       mouse_buttons button,
-      const Position2d &position
+      const Vector2D &position
   )
       : m_eventType(eventType)
         , m_button(button)

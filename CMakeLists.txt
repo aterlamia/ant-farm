@@ -71,7 +71,7 @@ set(SOURCE_FILES_ENGINE
     Engine/Components/TextureComponent.cpp
     Engine/Components/TextureComponent.h
     Engine/Math/Vector2d.h
-    Engine/ValueObjects/Position2d.h
+    Engine/ValueObjects/Vector2D.h
     Engine/ValueObjects/Frame.h
     Engine/Components/AnimationComponent.cpp
     Engine/Components/AnimationComponent.h
@@ -83,7 +83,9 @@ set(SOURCE_FILES_ENGINE
     Engine/Events/MouseEvent.h
     Engine/Events/EventType.h
     Engine/System/LogEnums.h
-    Layer/LayerManager.h Engine/SceneManager.cpp Engine/SceneManager.h GameObject/TileObject.cpp GameObject/TileObject.h)
+    Layer/LayerManager.h Engine/SceneManager.cpp Engine/SceneManager.h GameObject/TileObject.cpp GameObject/TileObject.h
+    Engine/utils/fps.h Engine/utils/Interval.h
+    )
 
 
 add_executable(AntFarm ${SOURCE_FILES_ENGINE} ${SOURCE_FILES})
